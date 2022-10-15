@@ -1,0 +1,42 @@
+{
+  "name": "apitestoutvio",
+  "version": "1.0.0",
+  "main": "index.js",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint-staged",
+      "pre-push": "cross-env CI=true npm run test"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint src --fix --ext .js",
+      "cross-env CI=true npm run test --findRelatedTests"
+    ]
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "mocha tests/**/*.test.js --timeout 30000 --exit",
+    "lint": "eslint src --fix --ext .js",
+    "lint-staged": "lint-staged"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thalmonn/apiTestOutvio.git"
+  },
+  "keywords": [],
+  "author": "Thalmonn Sales",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Thalmonn/apiTestOutvio/issues"
+  },
+  "homepage": "https://github.com/Thalmonn/apiTestOutvio#readme",
+  "devDependencies": {
+    "cross-env": "^6.0.3",
+    "husky": "^4.0.10",
+    "lint-staged": "^10.0.0",
+    "nodemon": "^2.0.20",
+    "sonarqube-scanner": "^2.8.2"
+  }
+}
