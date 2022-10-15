@@ -4,9 +4,7 @@ const { publicFacade } = require('../facades/public.facade');
 class PublicController {
   async index(req, res) {
     try {
-    const body = req;
-
-    const data = await publicFacade(body);
+    const data = await publicFacade();
 
     return res.status(http_status_codes.OK).send(data);
     } catch(err){

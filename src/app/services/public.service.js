@@ -1,6 +1,8 @@
+const MessageConstants = require('../constants/message.constants');
+
 class PublicService {
-  async execute(body) {
-    return 'ok';
+  async execute() {
+    return MessageConstants.DEFAULT_RETURN_PUBLIC;
   }
 }
 

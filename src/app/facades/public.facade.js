@@ -1,6 +1,6 @@
 const publicService = require('../services/public.service');
 
-const publicFacade = (body) => publicService.execute(body);
+const publicFacade = () => publicService.execute();
 
 module.exports = {
   publicFacade

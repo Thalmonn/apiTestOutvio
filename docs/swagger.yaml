@@ -1,0 +1,44 @@
+openapi: 3.0.0
+info:
+  title: apitestoutvio
+  contact: {}
+  version: '1.0'
+servers:
+- url: http://localhost:5000/api
+  variables: {}
+paths:
+  /public:
+    get:
+      tags:
+      - Routes
+      summary: Public
+      operationId: Public
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /private:
+    get:
+      tags:
+      - Routes
+      summary: Private
+      operationId: Private
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+security: []
+tags:
+- name: Routes
+  description: ''
