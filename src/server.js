@@ -3,6 +3,7 @@ const cors = require('cors');
 const compression = require('compression');
 const express = require('express');
 const ip = require('ip');
+const connectDB = require('./database/connect/db-config');
 
 const app = express();
 const publicRoutes = require('./routes/public.routes');
@@ -43,5 +44,9 @@ app.use((err, req, res) => {
   const status = err.status || 500;
   return res.status(status).json(error);
 });
+
+(async () => {
+  await connectDB();
+})();
 
 module.exports = app;
