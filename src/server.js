@@ -1,8 +1,3 @@
-require('dotenv').config();
-
-// Constants
-const PORT = process.env.PORT || 5000;
-
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const compression = require('compression');
@@ -14,8 +9,9 @@ const publicRoutes = require('./routes/public.routes');
 const privateRoutes = require('./routes/private.routes');
 const swaggerRoutes = require('./routes/swagger.routes');
 
+const PORT = process.env.PORT || 5000;
+
 const {
-  logger,
   responseMiddleware,
   securityMiddleware,
  } = require('./app/middlewares');
@@ -46,12 +42,6 @@ app.use((err, req, res) => {
   const error = app.get('env') === 'development' ? err : {};
   const status = err.status || 500;
   return res.status(status).json(error);
-});
-
-app.listen(PORT, () => {
-  logger.info(
-    `Server is running at port ${PORT}, see more about the application on: http://${ip.address()}:${PORT}/api/docs`,
-  );
 });
 
 module.exports = app;
