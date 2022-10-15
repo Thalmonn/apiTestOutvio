@@ -14,8 +14,8 @@ const PORT = process.env.PORT || 5000;
 
 const {
   responseMiddleware,
-  securityMiddleware,
- } = require('./app/middlewares');
+  securityMiddleware
+} = require('./app/middlewares');
 
 app.use(compression());
 app.use(cors());

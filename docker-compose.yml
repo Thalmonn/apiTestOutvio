@@ -18,6 +18,7 @@ services:
             - REDIS_HOST=redis
             - RATE_LIMIT_IP=100
             - RATE_LIMIT_TOKEN=200
+            - RATE_LIMIT_DEFAULT=500
             - RATE_LIMIT_TIME=1hr
         restart: on-failure
         deploy:
