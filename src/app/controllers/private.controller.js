@@ -1,6 +1,17 @@
+const http_status_codes = require('http-status-codes');
+const { privateFacade } = require('../facades/private.facade');
+
 class PrivateController {
   async index(req, res) {
-    return res.send('ok');
+    try {
+    const body = req;
+
+    const data = await privateFacade(body);
+
+    return res.status(http_status_codes.OK).send(data);
+    } catch(err){
+      return res.status(http_status_codes.BAD_REQUEST).send(err.message);
+    }
   }
 }
 
