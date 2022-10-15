@@ -6,7 +6,7 @@ class PublicController {
     try {
     const data = await publicFacade();
 
-    return res.status(http_status_codes.OK).send(data);
+    return res.status(http_status_codes.OK).json(data);
     } catch(err){
       return res.status(http_status_codes.BAD_REQUEST).send(err.message);
     }
