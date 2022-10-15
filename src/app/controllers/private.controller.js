@@ -4,9 +4,7 @@ const { privateFacade } = require('../facades/private.facade');
 class PrivateController {
   async index(req, res) {
     try {
-    const body = req;
-
-    const data = await privateFacade(body);
+    const data = await privateFacade();
 
     return res.status(http_status_codes.OK).send(data);
     } catch(err){

@@ -12,6 +12,7 @@ const ip = require('ip');
 const app = express();
 const publicRoutes = require('./routes/public.routes');
 const privateRoutes = require('./routes/private.routes');
+const swaggerRoutes = require('./routes/swagger.routes');
 
 const {
   logger,
@@ -27,7 +28,7 @@ app.use(responseMiddleware);
 securityMiddleware(app);
 
 // Routes
-app.use('/api', [publicRoutes, privateRoutes]);
+app.use('/api', [publicRoutes, privateRoutes, swaggerRoutes]);
 
 // catch 404
 app.use((req, res) =>
