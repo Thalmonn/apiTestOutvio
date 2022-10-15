@@ -16,7 +16,7 @@ const privateRoutes = require('./routes/private.routes');
 const {
   logger,
   responseMiddleware,
-  securityMiddleware
+  securityMiddleware,
  } = require('./app/middlewares');
 
 app.use(compression());

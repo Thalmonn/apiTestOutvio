@@ -1,5 +1,6 @@
 const http_status_codes = require('http-status-codes');
 const { verify } = require('jsonwebtoken');
+const TokenConstants = require('../constants/token.constants');
 
 const authenticatedMiddleware = (
     request,
@@ -11,7 +12,7 @@ const authenticatedMiddleware = (
     if (!authHeaders) {
         return response
             .status(http_status_codes.UNAUTHORIZED)
-            .json({ error: 'Token precisa ser passado' });
+            .json({ error: TokenConstants.TOKEN_MISSING });
     }
 
     const [, token] = authHeaders.split(' ');
@@ -23,7 +24,7 @@ const authenticatedMiddleware = (
     } catch (err) {
         return response
             .status(http_status_codes.UNAUTHORIZED)
-            .json({ error: 'Token mal informado' });
+            .json({ error: TokenConstants.INVALID_TOKEN });
     }
 };
 
