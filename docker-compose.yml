@@ -1,0 +1,70 @@
+version: "3"
+
+volumes:
+  node_data: {}
+
+services:
+
+  ################################ NODEjs ################################
+    node-backend:
+        image: node:12.10.0-alpine
+        container_name: nodejs
+        expose:
+            - 5000
+        environment:
+            - DATABASE_URL=mongodb://db:27017/apitestoutvio
+            - SECRET=secret
+            - REDIS_PORT=6379
+            - REDIS_HOST=redis
+            - RATE_LIMIT_IP=100
+            - RATE_LIMIT_TOKEN=200
+            - RATE_LIMIT_DEFAULT=500
+            - RATE_LIMIT_TIME=1hr
+        restart: on-failure
+        deploy:
+          restart_policy:
+            condition: on-failure
+        ports:
+            - 5000:5000
+        volumes:
+            - "./backend/:/home/app/"
+        depends_on:
+        - db
+        - redis
+        links:
+        - db
+        - redis
+        command: sh -c "cd /home/app && npm install --save && npm run start"
+
+
+  ################################ MONGO ################################
+    db:
+        image: mongo
+        container_name: mongodb
+        restart: on-failure
+        deploy:
+          restart_policy:
+            condition: on-failure
+        ports:
+        - 27017:27017
+
+
+  ################################ REDIS ################################
+    redis:
+        image: redis:alpine
+        container_name: redis
+        expose:
+            - 6379
+        restart: on-failure
+        deploy:
+          restart_policy:
+            condition: on-failure
+        ports:
+        - 6379:6379
+        volumes:
+            - ./config/redis.conf:/redis.conf
+        depends_on:
+        - db
+        links:
+        - db
+        command: [ "redis-server", "/redis.conf" ]
