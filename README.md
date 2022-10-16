@@ -114,9 +114,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 [prettier-url]: https://prettier.io/
 [prettier-shield]: https://img.shields.io/badge/codystyle-prettier-pink?style=for-the-badge
 [issues-shield]: https://img.shields.io/github/issues/Thalmonn/boraver.svg?style=for-the-badge
-[issues-url]: https://github.com/Thalmonn/boraver/issues
+[issues-url]: https://github.com/Thalmonn/apiTestOutvio/issues
 [license-shield]: https://img.shields.io/github/license/Thalmonn/boraver.svg?style=for-the-badge
-[license-url]: https://github.com/Thalmonn/boraver/blob/main/LICENSE.txt
+[license-url]: https://github.com/Thalmonn/apiTestOutvio/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/Thalmonn
 [twitter-shield]: https://img.shields.io/badge/-Twitter-black.svg?style=for-the-badge&logo=twitter&colorB=555
